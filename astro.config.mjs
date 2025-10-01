@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/static"; // 👈 Importamos el adaptador
+import vercel from "@astrojs/vercel";
 
-// https://astro.build/config
 export default defineConfig({
-  adapter: vercel(), // 👈 Añadimos el adaptador aquí
+  adapter: vercel(),
   integrations: [tailwind()],
   i18n: {
     defaultLocale: 'en',
