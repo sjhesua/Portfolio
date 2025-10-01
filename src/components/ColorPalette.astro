@@ -1,0 +1,103 @@
+---
+const colors = [
+  { cssVar: '--color-primary', label: 'Primary', default: '#3190a9' },
+  { cssVar: '--color-secondary', label: 'Secondary', default: '#fda947' },
+  { cssVar: '--color-background', label: 'Background', default: '#ffffff' },
+];
+---
+
+<style>
+  #palette-panel {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    width: 18rem;
+    z-index: 9999;
+  }
+  #palette-panel.hidden {
+    display: none;
+  }
+  #palette-panel label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  #palette-panel input[type="text"] {
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    font-family: monospace;
+  }
+  #toggle-btn {
+    background-color: #3190a9;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<div id="palette-panel">
+  <button id="toggle-btn">Ocultar</button>
+
+  <form id="color-form" onsubmit="event.preventDefault()">
+    {colors.map(color => (
+      <>
+        <label for={color.cssVar}>{color.label}</label>
+        <input
+          id={color.cssVar}
+          type="text"
+          value={color.default}
+          data-css-var={color.cssVar}
+          placeholder="#hex o rgb(...)"
+        />
+      </>
+    ))}
+  </form>
+</div>
+
+<script>
+  const panel = document.getElementById('palette-panel');
+  const toggleBtn = document.getElementById('toggle-btn');
+  const inputs = panel.querySelectorAll('input[type="text"]');
+
+  // Mostrar/Ocultar panel
+  toggleBtn.addEventListener('click', () => {
+    panel.classList.toggle('hidden');
+    toggleBtn.textContent = panel.classList.contains('hidden') ? 'Mostrar' : 'Ocultar';
+  });
+
+  // Función para validar HEX o RGB simple
+  function isValidColor(str) {
+    const hex = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
+    const rgb = /^rgb\(\s*(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\s*\)$/;
+    return hex.test(str) || rgb.test(str);
+  }
+
+  // Actualizar variables CSS al escribir
+  inputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      const cssVar = e.target.dataset.cssVar;
+      if (isValidColor(val)) {
+        document.documentElement.style.setProperty(cssVar, val);
+        e.target.style.borderColor = 'green';
+      } else {
+        e.target.style.borderColor = 'red';
+      }
+    });
+  });
+
+  // Inicializa variables CSS con valores por defecto
+  inputs.forEach(input => {
+    document.documentElement.style.setProperty(input.dataset.cssVar, input.value);
+  });
+</script>

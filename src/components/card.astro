@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import Modal from '../components/Modal.astro';
+
+interface Props {
+    id: number;
+    img: string;
+    info:any;
+    description:string;
+}
+const {id,img,info,description,} = Astro.props
+---
+<!-- Modal 1 -->
+<input id={"work"+id.toString()} type="checkbox" class="hidden">
+<div class=" p-6 bg-gray-50 dark:bg-gray-950">
+    <div class="flex justify-center items-center">
+        <img src={img} alt="Project" class="mb-4 h-[15rem]" />
+    </div>
+    <h3 class="text-lg mb-2 border-gray-950 dark:border-gray-700 border-b">
+        {info.title}
+    </h3>
+    <p class="text-sm">
+        A brief description of the project goes here.
+        Highlighting the main features or the problem it
+        solves.
+    </p>
+    <div class="relative inline-block transform btn-borderB mt-2">
+        <Modal id={"modal"+id.toString()}  buttonText="Open Modal" content={info.title} />    
+    </div>
+</div>

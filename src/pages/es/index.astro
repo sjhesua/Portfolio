@@ -1,0 +1,363 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+
+import { Image } from "astro:assets";
+import photoProfile from "../../images/perfil.png";
+import case1 from "../../images/case1.webp";
+import trabajo1 from "../../images/trabajo1.png";
+//Components
+import CardPro from "../../components/card.astro";
+import InfoPro from "../../components/infoTag.astro";
+import infoWork from "../../components/data/infoWork.json";
+import Modal from "../../components/Modal.astro";
+import DarkLightToggle from "../../components/darkLightToggle.astro";
+//iconos
+import {
+	icons,frontendIcons,toolsIcons,LinkedIn
+} from "../../assets/icons";
+
+import CopyEmail from "../../components/CopyEmail.astro";
+
+//import ColorPalette from '../components/ColorPalette.astro';
+//Styles
+import "../../styles/global.css";
+//Translations
+import { useTranslations } from '../../i18n/utils';
+import { languagesList } from '../../i18n/ui';
+const currentLang = Astro.currentLocale || 'en';
+
+const translateLabels = useTranslations(
+	currentLang as keyof typeof languagesList
+);
+
+const infoTags = [
+	"Información Personal",
+];
+---
+
+<Layout title="Jhesua Portfolio">
+	<!-- INFO MODALS -->
+	<!-- Modal 1 -->
+	<input id="c1" type="checkbox" class="hidden" />
+	<div
+		class="relative z-10 hidden"
+		aria-labelledby="modal-title"
+		role="dialog"
+		aria-modal="true"
+	>
+		<div class="fixed inset-0 bg-gray-950 bg-opacity-75">
+		</div>
+
+	</div>
+	<!-- END INFO MODALS -->
+	<main class="text-gray-950 dark:text-gray-50 bg-gray-950">
+		<div class="container mx-auto p-4 pb-2">
+			<div class="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
+				<!-- Right Column: Profile Section -->
+				<div class="w-full custome:order-2 lg:order-2 order-1 md:col-span-1 bg-gray-50 dark:bg-gray-950">
+					<div class="flex flex-col items-center mt-8">
+						<div
+							class="relative inline-block img-border"
+						>
+							<Image
+								src={photoProfile}
+								alt="Profile"
+								loading="eager"
+								class="mb-4"
+							/>
+							
+							<span
+								class="absolute border border-gray-950 dark:border-gray-50 pointer-events-none custom-animation"
+							></span>
+							<DarkLightToggle/>
+						</div>
+						
+						<div class="bg-gray-400 dark:bg-gray-50 w-full mt-6">
+							<h1
+								class="md:text-3xl sm:text-2xl text-center text-gray-950 font-semibold"
+							>
+								Jhesua Sifontes
+							</h1>
+						</div>
+						<div class="p-8">
+							<div class="text-center">
+								<h2
+									class="md:text-3xl sm:text-1xl text-gray-950 dark:text-gray-50 font-semibold mb-2"
+								>
+									Desarrollador Full-Stack
+								</h2>
+								<h3 class="text-gray-950 dark:text-gray-50 mb-4">
+									{translateLabels("home.description")}
+								</h3>
+							</div>
+							<div>
+								<ul class="text-left space-y-4">
+								<CopyEmail client:load/>
+								<li class="flex text-gray-950 dark:text-gray-50 items-center">
+									<a href="https://www.linkedin.com/in/sjhesua" target="_blank" rel="noopener noreferrer" class="relative inline-block transform transition duration-500 ease-in-out check">
+										<label class="w-6 h-6 mr-2 inline-flex items-center justify-center text-gray-950 cursor-pointer border bg-gray-50 border-gray-950">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 64C92.7 64 64 92.7 64 128L64 512C64 547.3 92.7 576 128 576L208 576L208 464C208 428.7 236.7 400 272 400L448 400L448 234.5C448 217.5 441.3 201.2 429.3 189.2L322.7 82.7C310.7 70.7 294.5 64 277.5 64L128 64zM389.5 240L296 240C282.7 240 272 229.3 272 216L272 122.5L389.5 240zM272 444C261 444 252 453 252 464L252 592C252 603 261 612 272 612C283 612 292 603 292 592L292 564L304 564C337.1 564 364 537.1 364 504C364 470.9 337.1 444 304 444L272 444zM304 524L292 524L292 484L304 484C315 484 324 493 324 504C324 515 315 524 304 524zM400 444C389 444 380 453 380 464L380 592C380 603 389 612 400 612L432 612C460.7 612 484 588.7 484 560L484 496C484 467.3 460.7 444 432 444L400 444zM420 572L420 484L432 484C438.6 484 444 489.4 444 496L444 560C444 566.6 438.6 572 432 572L420 572zM508 464L508 592C508 603 517 612 528 612C539 612 548 603 548 592L548 548L576 548C587 548 596 539 596 528C596 517 587 508 576 508L548 508L548 484L576 484C587 484 596 475 596 464C596 453 587 444 576 444L528 444C517 444 508 453 508 464z"/></svg>
+										</label>
+									</a>
+									Curriculum Vitae
+								</li>
+								<li class="flex text-gray-950 dark:text-gray-50 items-center">
+									<a href="https://www.linkedin.com/in/sjhesua" target="_blank" rel="noopener noreferrer" class="relative inline-block transform transition duration-500 ease-in-out check">
+										<label class="w-6 h-6 mr-2 inline-flex items-center justify-center text-gray-950 cursor-pointer border bg-gray-50 border-gray-950">
+											<LinkedIn/>
+										</label>
+									</a>
+									Linkedin Perfil
+								</li>
+								</ul>
+								<ul class="text-left space-y-4">
+									<!-- Project Card 1 -->
+									{
+										infoTags.map((infoTag: any, index) => (
+											<InfoPro
+												info={infoTag}
+												id={index}
+											/>
+										))
+									}
+								</ul>
+								<div class="text-center">
+									<h3
+										class="md:text-3xl sm:text-1xl text-gray-950 dark:text-gray-50 font-semibold my-6"
+									>
+										Habilidades Backend
+									</h3>
+								</div>
+								<div class="grid grid-cols-4 sm:grid-cols-5 gap-5 my-2">
+									{
+										Object.entries(icons).map(
+											([name, Icon]) => (
+												<div class="flex flex-col items-center" >
+													<Icon class="w-8 h-8 text-black" />
+													<span class="text-xs">
+														{name}
+													</span>
+												</div>
+											),
+										)
+									}
+								</div>
+							</div>
+							<div class="text-center">
+								<h2
+									class="md:text-3xl sm:text-1xl text-gray-950 dark:text-gray-50 font-semibold my-6"
+								>
+									Habilidades Frontend
+								</h2>
+							</div>
+							<div class="grid grid-cols-4 sm:grid-cols-5 gap-5 my-2">
+								{
+									Object.entries(frontendIcons).map(
+										([name, Icon]) => (
+											<div class="flex flex-col items-center" >
+												<Icon class="w-8 h-8 text-black" />
+												<span class="text-xs">
+													{name}
+												</span>
+											</div>
+										),
+									)
+								}
+							</div>
+							<div class="text-center">
+								<h2
+									class="md:text-3xl sm:text-1xl text-gray-950 dark:text-gray-50 font-semibold my-6"
+								>
+									Herramientas
+								</h2>
+							</div>
+							<div class="grid grid-cols-4 sm:grid-cols-5 gap-5 my-2">
+								{
+									Object.entries(toolsIcons).map(
+										([name, Icon]) => (
+											<div class="flex flex-col items-center" >
+												<Icon class="w-8 h-8 text-black" />
+												<span class="text-xs">
+													{name}
+												</span>
+											</div>
+										),
+									)
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Left Column: Project Cards -->
+				<div
+					class="w-full lg:order-1 lg:order-1 order-2 md:col-span-1 custome:col-span-2 lg:col-span-2"
+				>
+					<div class="grid grid-cols-1 gap-4 pb-4">
+						<div class="bg-gray-50 dark:bg-gray-950 p-6">
+							<Image
+								src={trabajo1}
+								alt="Project"
+								loading="eager"
+								class="mb-4"
+							/>
+							<h3
+								class="text-lg font-semibold mb-2 border-gray-950 border-b max-w-xs"
+							>
+								Títulos
+							</h3>
+							<p class="text-sm">
+								A brief description of the project goes here.
+								Highlighting the main features or the problem it
+								solves.
+							</p>
+							<Modal
+								id="myModal"
+								buttonText="Open Modal"
+								content="This is my modal content"
+							/>
+
+							<div
+								class="relative inline-block transform transition duration-500 btn-border"
+							>
+								<a
+									href="xxx.xxx"
+									class="mt-4 inline-block bg-gray-400 text-gray-950 px-6 py-2"
+									>View Project</a
+								>
+								<span
+									class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"
+								></span>
+							</div>
+						</div>
+					</div>
+					<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX--->
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<!-- Project Card 1 -->
+						<div class="p-6 bg-gray-50 dark:bg-gray-950">
+							<Image src={case1} alt="Project" class="mb-4" />
+							<h3 class="text-lg mb-2 border-gray-950 border-b">
+								Project Title Card
+							</h3>
+							<p class="text-sm">
+								A brief description of the project goes here.
+								Highlighting the main features or the problem it
+								solves.
+							</p>
+
+							<div
+								class="relative inline-block transform transition duration-500 btn-border"
+							>
+								<a
+									href="xxx.xxx"
+									class="mt-4 inline-block bg-gray-400 text-gray-950 px-6 py-2"
+									>View Project</a
+								>
+								<span
+									class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"
+								></span>
+							</div>
+						</div>
+						<!-- Project Card 2 -->
+						<div class="p-6 bg-gray-50 dark:bg-gray-950">
+							<Image src={case1} alt="Project" class="mb-4" />
+							<h3 class="text-lg mb-2 border-gray-950 border-b">
+								Project Title Card
+							</h3>
+							<p class="text-sm">
+								A brief description of the project goes here.
+								Highlighting the main features or the problem it
+								solves.
+							</p>
+
+							<div
+								class="relative inline-block transform transition duration-500 btn-border"
+							>
+								<a
+									href="xxx.xxx"
+									class="mt-4 inline-block bg-gray-400 text-gray-950 px-6 py-2"
+									>View Project</a
+								>
+								<span
+									class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"
+								></span>
+							</div>
+						</div>
+						<div class="p-6 bg-gray-50 dark:bg-gray-950">
+							<Image src={case1} alt="Project" class="mb-4" />
+							<h3 class="text-lg mb-2 border-gray-950 border-b">
+								Project Title Card
+							</h3>
+							<p class="text-sm">
+								A brief description of the project goes here.
+								Highlighting the main features or the problem it
+								solves.
+							</p>
+
+							<div
+								class="relative inline-block transform transition duration-500 btn-border"
+							>
+								<a
+									href="xxx.xxx"
+									class="mt-4 inline-block bg-gray-400 text-gray-950 px-6 py-2"
+									>View Project</a
+								>
+								<span
+									class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"
+								></span>
+							</div>
+						</div>
+						<div class="p-6 bg-gray-50 dark:bg-gray-950">
+							<Image src={case1} alt="Project" class="mb-4" />
+							<h3 class="text-lg mb-2 border-gray-950 border-b">
+								Project Title Card
+							</h3>
+							<p class="text-sm">
+								A brief description of the project goes here.
+								Highlighting the main features or the problem it
+								solves.
+							</p>
+
+							<div
+								class="relative inline-block transform transition duration-500 btn-border"
+							>
+								<a
+									href="xxx.xxx"
+									class="mt-4 inline-block bg-gray-400 text-gray-950 px-6 py-2"
+									>View Project</a
+								>
+								<span
+									class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"
+								></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mx-auto p-4 pt-2">
+			<div class="flex flex-wrap">
+				<!-- Left Column: Project Cards -->
+				<div class="custome:order-1 lg:order-1 order-2">
+					<div
+						class="grid grid-cols-1 custome:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 gap-4"
+					>
+						<!-- Project Card 1 -->
+						{
+							infoWork.map((trabajo: any, index) => (
+								<CardPro
+									img={trabajo.cover}
+									id={index}
+									info={trabajo}
+									description={
+										"A brief description of the project goes here. Highlighting the main features or the problem it solves."
+									}
+								/>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

@@ -1,0 +1,42 @@
+---
+const { id, buttonText, content } = Astro.props;
+---
+<div>
+ 
+  <dialog id={id} class="p-6 bg-white text-gray-800">
+    
+    <div class="flex items-start sm:w-full sm:max-w-lg" style="z-index: 11;">
+      <div class="flex items-start">
+        <div class="text-center sm:mt-0 sm:text-left">
+            <div class="flex items-center justify-between">
+                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">{content}</h3>
+                <form method="dialog" >
+                  <button class="w-6 h-6 inline-flex items-center justify-center bg-gray-400 text-gray-950 cursor-pointer" type="submit" onclick={`document.getElementById('${id}-overlay').classList.add('hidden');`}>X</button>
+                </form>
+            </div>
+            <video class="w-full my-2" controls>
+              <source src="/video/a.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="my-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non laboriosam dolore nisi tempore maiores natus veritatis animi doloribus repellat eveniet beatae adipisci reprehenderit eius, numquam illum mollitia id labore odit.
+            </p>
+            <p class="my-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non laboriosam dolore nisi tempore maiores natus veritatis animi doloribus repellat eveniet beatae adipisci reprehenderit eius, numquam illum mollitia id labore odit.
+            </p>
+            <p class="my-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non laboriosam dolore nisi tempore maiores natus veritatis animi doloribus repellat eveniet beatae adipisci reprehenderit eius, numquam illum mollitia id labore odit.
+            </p>
+            <p class="my-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non laboriosam dolore nisi tempore maiores natus veritatis animi doloribus repellat eveniet beatae adipisci reprehenderit eius, numquam illum mollitia id labore odit.
+            </p>
+        </div>
+        <div class="relative inline-block transform transition duration-500 ease-in-out check"></div>
+      </div>
+    </div>
+  </dialog>
+  <div class="relative inline-block transform transition duration-500 btn-borderB mt-2">
+    <button class="inline-block px-6 py-2 bg-gray-400 text-gray-950" onclick={`document.getElementById('${id}').showModal(); document.getElementById('${id}-overlay').classList.remove('hidden');`}>{buttonText}</button>
+    <span class="absolute border border-gray-950 dark:border-gray-700 pointer-events-none"></span>
+  </div>
+</div>

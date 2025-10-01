@@ -1,0 +1,52 @@
+[
+    {
+      "title": "Analysis of the Cryptocurrency",
+      "brief_description": "This project addresses the behavior and trends of the cryptocurrency market during the year 2023, highlighting the main events and their impact on cryptocurrency prices and adoption.",
+      "paragraphs": [
+        {
+          "title": "Introduction",
+          "content": "During the year 2023, the cryptocurrency market experienced a series of significant changes due to various economic, regulatory, and technological factors."
+        },
+        {
+          "title": "Highlighted Events",
+          "content": [
+            "In January, institutional adoption of Bitcoin reached a new record, with companies and investment funds incorporating Bitcoin into their reserves as a hedge against inflation.",
+            "In March, market volatility increased due to regulatory uncertainty in several countries, resulting in a significant correction in the prices of many cryptocurrencies.",
+            "In July, the successful implementation of the Ethereum 2.0 upgrade marked a significant milestone in Ethereum's development, leading to increased investor confidence and a surge in ETH price.",
+            "In October, the launch of a stablecoin backed by a major financial institution sparked debates about the role of cryptocurrencies in the global economy."
+          ]
+        },
+        {
+          "title": "Conclusions",
+          "content": "The analysis of the cryptocurrency market in 2023 reveals the growing maturity and ongoing evolution of the cryptographic ecosystem. Despite regulatory challenges and volatility, cryptocurrencies continue to gain acceptance and legitimacy as a viable asset class."
+        }
+      ],
+      "cover": "/images/Sin_titulo.png",
+      "video": "https://example.com/video.mp4"
+    },
+    {
+      "title": "Otro trabajo que realice",
+      "brief_description": "This project addresses the behavior and trends of the cryptocurrency market during the year 2023, highlighting the main events and their impact on cryptocurrency prices and adoption.",
+      "paragraphs": [
+        {
+          "title": "Introduction",
+          "content": "During the year 2023, the cryptocurrency market experienced a series of significant changes due to various economic, regulatory, and technological factors."
+        },
+        {
+          "title": "Highlighted Events",
+          "content": [
+            "In January, institutional adoption of Bitcoin reached a new record, with companies and investment funds incorporating Bitcoin into their reserves as a hedge against inflation.",
+            "In March, market volatility increased due to regulatory uncertainty in several countries, resulting in a significant correction in the prices of many cryptocurrencies.",
+            "In July, the successful implementation of the Ethereum 2.0 upgrade marked a significant milestone in Ethereum's development, leading to increased investor confidence and a surge in ETH price.",
+            "In October, the launch of a stablecoin backed by a major financial institution sparked debates about the role of cryptocurrencies in the global economy."
+          ]
+        },
+        {
+          "title": "Conclusions",
+          "content": "The analysis of the cryptocurrency market in 2023 reveals the growing maturity and ongoing evolution of the cryptographic ecosystem. Despite regulatory challenges and volatility, cryptocurrencies continue to gain acceptance and legitimacy as a viable asset class."
+        }
+      ],
+      "cover": "/images/case1.webp",
+      "video": "https://example.com/video.mp4"
+    }
+  ]
