@@ -1,5 +1,28 @@
 ---
-import Page from "./en/index.astro";
 ---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <script>
+      // Detectar idioma del navegador (ej: "es-ES" -> "es")
+      const lang = navigator.language?.slice(0, 2) || "en";
 
-<Page />
+      // Idiomas soportados
+      const supported = ["en", "es"];
+
+      // Idioma por defecto si no está soportado
+      const fallback = "en";
+
+      // Elegir idioma destino
+      const target = supported.includes(lang) ? lang : fallback;
+
+      // Evitar bucle si ya estamos en la ruta correcta
+      if (!window.location.pathname.startsWith(`/${target}/`)) {
+        window.location.replace(`/${target}/`);
+      }
+    </script>
+  </body>
+</html>
